@@ -22,5 +22,5 @@ jobs:
 
       - name: Reload web app
         run: |
-          curl -X POST "https://www.pythonanywhere.com/api/v0/user/Rajan2125/webapps/Rajan2125.pythonanywhere.com/reload/" \
+          curl -X POST "https://www.pythonanywhere.com/api/v0/user/Rajan2125/webapps/rajan2125.pythonanywhere.com/reload/" \
           -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}"
