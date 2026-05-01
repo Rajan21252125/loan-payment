@@ -78,11 +78,14 @@ def index():
 
     # Month dropdown
     months = []
-    for y in range(2026, 2039):
-        for m in ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]:
-            months.append(f"{m} {y}")
 
     current_month = datetime.now().strftime("%b %Y")
+
+    for y in range(2026, 2039):
+        for m in ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]:
+            if y == 2026 and m in ["Jan","Feb","Mar","Apr"]:
+                continue
+            months.append(f"{m} {y}")
 
     return render_template(
         "index.html",

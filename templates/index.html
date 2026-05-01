@@ -1,311 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Finance Dashboard</title>
+    <title>Finance Dashboard</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<style>
-body {
-    background: #f5f7fb;
-    font-family: 'Segoe UI', sans-serif;
-}
+    <style>
+        body {
+            background: #f5f7fb;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-.header {
-    text-align: center;
-    font-weight: 600;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+        .header {
+            text-align: center;
+            font-weight: 600;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-.card {
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border: none;
-}
+        .card {
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: none;
+        }
 
-.summary-card {
-    padding: 15px;
-    text-align: center;
-}
+        .summary-card {
+            padding: 15px;
+            text-align: center;
+        }
 
-.summary-card h6 {
-    font-size: 14px;
-    color: #777;
-}
+        .summary-card h6 {
+            font-size: 14px;
+            color: #777;
+        }
 
-.summary-card h5 {
-    font-weight: 600;
-}
+        .summary-card h5 {
+            font-weight: 600;
+        }
 
-.loan-card {
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color: white;
-}
+        .loan-card {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
 
-.chart-container {
-    height: 300px;
-}
-</style>
+        .chart-container {
+            height: 300px;
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div class="container py-3">
+    <div class="container py-3">
 
-<div class="header">💰 Loan & SIP Dashboard</div>
+        <div class="header">💰 Loan & SIP Dashboard</div>
 
-<!-- SUMMARY -->
-<div class="row g-3">
+        <!-- SUMMARY -->
+        <div class="row g-3">
 
-<div class="col-6 col-md-3">
-<div class="card summary-card">
-<h6>EMI</h6>
-<h5>₹{{ total_emi }}</h5>
-</div>
-</div>
+            <div class="col-6 col-md-3">
+                <div class="card summary-card">
+                    <h6>EMI</h6>
+                    <h5>₹{{ total_emi }}</h5>
+                </div>
+            </div>
 
-<div class="col-6 col-md-3">
-<div class="card summary-card">
-<h6>Prepayment</h6>
-<h5>₹{{ total_prepayment }}</h5>
-</div>
-</div>
+            <div class="col-6 col-md-3">
+                <div class="card summary-card">
+                    <h6>Prepayment</h6>
+                    <h5>₹{{ total_prepayment }}</h5>
+                </div>
+            </div>
 
-<div class="col-6 col-md-3">
-<div class="card summary-card">
-<h6>Flexi</h6>
-<h5>₹{{ total_flexi }}</h5>
-</div>
-</div>
+            <div class="col-6 col-md-3">
+                <div class="card summary-card">
+                    <h6>Flexi</h6>
+                    <h5>₹{{ total_flexi }}</h5>
+                </div>
+            </div>
 
-<div class="col-6 col-md-3">
-<div class="card summary-card">
-<h6>Large</h6>
-<h5>₹{{ total_large }}</h5>
-</div>
-</div>
+            <div class="col-6 col-md-3">
+                <div class="card summary-card">
+                    <h6>Large</h6>
+                    <h5>₹{{ total_large }}</h5>
+                </div>
+            </div>
 
-<div class="col-6 col-md-3">
-<div class="card summary-card">
-<h6>Mid</h6>
-<h5>₹{{ total_mid }}</h5>
-</div>
-</div>
+            <div class="col-6 col-md-3">
+                <div class="card summary-card">
+                    <h6>Mid</h6>
+                    <h5>₹{{ total_mid }}</h5>
+                </div>
+            </div>
 
-<div class="col-6 col-md-3">
-<div class="card summary-card">
-<h6>Small</h6>
-<h5>₹{{ total_small }}</h5>
-</div>
-</div>
+            <div class="col-6 col-md-3">
+                <div class="card summary-card">
+                    <h6>Small</h6>
+                    <h5>₹{{ total_small }}</h5>
+                </div>
+            </div>
 
-<!-- LOAN CARD -->
-<div class="col-12">
-<div class="card summary-card loan-card">
-<h6>Remaining Loan</h6>
-<h4>₹{{ remaining_loan }}</h4>
-<p>Loan Free in ~ {{ months_left }} months</p>
-</div>
-</div>
+            <!-- LOAN CARD -->
+            <div class="col-12">
+                <div class="card summary-card loan-card">
+                    <h6>Remaining Loan</h6>
+                    <h4>₹{{ remaining_loan }}</h4>
+                    <p>Loan Free in ~ {{ months_left }} months</p>
+                </div>
+            </div>
 
-</div>
+        </div>
 
-<!-- CHART -->
-<div class="row mt-4">
+        <!-- CHART -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <canvas id="sipChart"></canvas>
+                </div>
+            </div>
 
-<div class="col-md-6">
-<div class="card p-3">
-<canvas id="sipChart"></canvas>
-</div>
-</div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
 
-<div class="col-md-6">
-<div class="card p-3">
-<canvas id="trendChart"></canvas>
-</div>
-</div>
+        <div class="card p-3 mt-3">
+            <canvas id="emiSipChart"></canvas>
+        </div>
 
-</div>
+        <!-- FORM -->
+        <div class="card p-3 mt-4">
+            <form method="POST" class="row g-2">
 
-<div class="card p-3 mt-3">
-<canvas id="emiSipChart"></canvas>
-</div>
+                <div class="col-12 col-md-6">
+                    <select name="month" class="form-select">
+                        {% for m in months %}
+                        <option value="{{ m }}" {% if m==current_month %}selected{% endif %}>
+                            {{ m }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-<!-- FORM -->
-<div class="card p-3 mt-4">
-<form method="POST" class="row g-2">
+                <div class="col-12 col-md-6">
+                    <select name="emi" class="form-select">
+                        <option value="Y">✔ EMI Paid</option>
+                        <option value="N">❌ EMI Not Paid</option>
+                    </select>
+                </div>
 
-<div class="col-12 col-md-6">
-<select name="month" class="form-select">
-{% for m in months %}
-<option value="{{ m }}" {% if m == current_month %}selected{% endif %}>
-{{ m }}
-</option>
-{% endfor %}
-</select>
-</div>
+                <div class="col-12 col-md-6">
+                    <input type="number" name="prepayment" class="form-control" placeholder="Prepayment">
+                </div>
 
-<div class="col-12 col-md-6">
-<select name="emi" class="form-select">
-<option value="Y">✔ EMI Paid</option>
-<option value="N">❌ EMI Not Paid</option>
-</select>
-</div>
+                <div class="col-12 col-md-6">
+                    <input type="text" name="note" class="form-control" placeholder="Note">
+                </div>
 
-<div class="col-12 col-md-6">
-<input type="number" name="prepayment" class="form-control" placeholder="Prepayment">
-</div>
+                <h6 class="mt-2">SIP Allocation</h6>
 
-<div class="col-12 col-md-6">
-<input type="text" name="note" class="form-control" placeholder="Note">
-</div>
+                <div class="col-6 col-md-3"><input type="number" name="flexi" value="2000" class="form-control"></div>
+                <div class="col-6 col-md-3"><input type="number" name="large" value="1500" class="form-control"></div>
+                <div class="col-6 col-md-3"><input type="number" name="mid" value="1000" class="form-control"></div>
+                <div class="col-6 col-md-3"><input type="number" name="small" value="500" class="form-control"></div>
 
-<h6 class="mt-2">SIP Allocation</h6>
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 mt-2">Save Entry</button>
+                </div>
 
-<div class="col-6 col-md-3"><input type="number" name="flexi" value="2000" class="form-control"></div>
-<div class="col-6 col-md-3"><input type="number" name="large" value="1500" class="form-control"></div>
-<div class="col-6 col-md-3"><input type="number" name="mid" value="1000" class="form-control"></div>
-<div class="col-6 col-md-3"><input type="number" name="small" value="500" class="form-control"></div>
+            </form>
+        </div>
+        <!-- HISTORY TABLE -->
+        <div class="card p-3 mt-4">
+            <h5 class="mb-3">📜 History</h5>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Month</th>
+                            <th>EMI</th>
+                            <th>Prepayment</th>
+                            <th>Flexi</th>
+                            <th>Large</th>
+                            <th>Mid</th>
+                            <th>Small</th>
+                            <th>Note</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if data %}
+                        {% for row in data %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ "✔" if row[1]=="Y" else "❌" }}</td>
+                            <td>₹{{ row[2] }}</td>
+                            <td>₹{{ row[3] }}</td>
+                            <td>₹{{ row[4] }}</td>
+                            <td>₹{{ row[5] }}</td>
+                            <td>₹{{ row[6] }}</td>
+                            <td>{{ row[7] }}</td>
+                            <td>
+                                <a href="/delete/{{ loop.index0 }}" class="btn btn-sm btn-danger">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="9" class="text-center text-muted">
+                                No data yet. Add your first entry 👆
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-<div class="col-12">
-<button class="btn btn-primary w-100 mt-2">Save Entry</button>
-</div>
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-</form>
-</div>
-<!-- HISTORY TABLE -->
-<div class="card p-3 mt-4">
+                <form method="POST" id="editForm">
 
-<h5 class="mb-3">📜 History</h5>
+                    <div class="modal-header">
+                        <h5>Edit Entry</h5>
+                    </div>
 
-<div class="table-responsive">
+                    <div class="modal-body">
 
-<table class="table table-hover align-middle">
+                        <input type="hidden" name="index" id="editIndex">
 
-<thead class="table-light">
-<tr>
-<th>Month</th>
-<th>EMI</th>
-<th>Prepayment</th>
-<th>Flexi</th>
-<th>Large</th>
-<th>Mid</th>
-<th>Small</th>
-<th>Note</th>
-<th>Action</th>
-</tr>
-</thead>
+                        <select name="emi" class="form-control mb-2">
+                            <option value="Y">Paid</option>
+                            <option value="N">Not Paid</option>
+                        </select>
 
-<tbody>
+                        <input type="number" name="prepayment" class="form-control mb-2">
+                        <input type="number" name="flexi" class="form-control mb-2">
+                        <input type="number" name="large" class="form-control mb-2">
+                        <input type="number" name="mid" class="form-control mb-2">
+                        <input type="number" name="small" class="form-control mb-2">
 
-{% if data %}
-    {% for row in data %}
-    <tr>
-        <td>{{ row[0] }}</td>
-        <td>{{ "✔" if row[1]=="Y" else "❌" }}</td>
-        <td>₹{{ row[2] }}</td>
-        <td>₹{{ row[3] }}</td>
-        <td>₹{{ row[4] }}</td>
-        <td>₹{{ row[5] }}</td>
-        <td>₹{{ row[6] }}</td>
-        <td>{{ row[7] }}</td>
+                    </div>
 
-        <td>
-            <a href="/delete/{{ loop.index0 }}" class="btn btn-sm btn-danger">
-                Delete
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-{% else %}
-    <tr>
-        <td colspan="9" class="text-center text-muted">
-            No data yet. Add your first entry 👆
-        </td>
-    </tr>
-{% endif %}
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
 
-</tbody>
+                </form>
 
-</table>
+            </div>
+        </div>
+    </div>
 
-</div>
+    <script>
 
-</div>
-
-</div>
-
-<div class="modal fade" id="editModal" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-
-<form method="POST" id="editForm">
-
-<div class="modal-header">
-<h5>Edit Entry</h5>
-</div>
-
-<div class="modal-body">
-
-<input type="hidden" name="index" id="editIndex">
-
-<select name="emi" class="form-control mb-2">
-<option value="Y">Paid</option>
-<option value="N">Not Paid</option>
-</select>
-
-<input type="number" name="prepayment" class="form-control mb-2">
-<input type="number" name="flexi" class="form-control mb-2">
-<input type="number" name="large" class="form-control mb-2">
-<input type="number" name="mid" class="form-control mb-2">
-<input type="number" name="small" class="form-control mb-2">
-
-</div>
-
-<div class="modal-footer">
-<button class="btn btn-primary">Save</button>
-</div>
-
-</form>
-
-</div>
-</div>
-</div>
-
-<script>
-
-// SIP PIE
-new Chart(document.getElementById('sipChart'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Flexi', 'Large', 'Mid', 'Small'],
-        datasets: [{
-            data: [
-                {{ total_flexi }},
+        // SIP PIE
+        new Chart(document.getElementById('sipChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Flexi', 'Large', 'Mid', 'Small'],
+                datasets: [{
+                    data: [
+                        {{ total_flexi }},
                 {{ total_large }},
                 {{ total_mid }},
-                {{ total_small }}
+            {{ total_small }}
             ],
-            backgroundColor: ['#4facfe','#ff6384','#ff9f40','#ffcd56']
+            backgroundColor: ['#4facfe', '#ff6384', '#ff9f40', '#ffcd56']
         }]
     }
 });
 
 
-// MONTHLY TREND
-new Chart(document.getElementById('trendChart'), {
-    type: 'line',
-    data: {
-        labels: [{% for r in data %}"{{ r[0] }}",{% endfor %}],
-        datasets: [{
-            label: "Prepayment",
-            data: [{% for r in data %}{{ r[2] or 0 }},{% endfor %}]
+        // MONTHLY TREND
+        new Chart(document.getElementById('trendChart'), {
+            type: 'line',
+            data: {
+                labels: [{% for r in data %}"{{ r[0] }}",{% endfor %}],
+            datasets: [{
+                label: "Prepayment",
+                data: [{% for r in data %}{{ r[2] or 0 }}, {% endfor %}]
         }]
     }
 });
@@ -325,7 +312,8 @@ new Chart(document.getElementById('emiSipChart'), {
     }
 });
 
-</script>
+    </script>
 
 </body>
+
 </html>
