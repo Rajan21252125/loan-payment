@@ -1,0 +1,26 @@
+name: Deploy to PythonAnywhere (API)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull latest code on PythonAnywhere
+        run: |
+          curl -X POST "https://www.pythonanywhere.com/api/v0/user/Rajan2125/consoles/" \
+          -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "executable": "/bin/bash",
+            "arguments": "-c \"cd /loan-payment && git pull origin main\""
+          }'
+
+      - name: Reload web app
+        run: |
+          curl -X POST "https://www.pythonanywhere.com/api/v0/user/Rajan2125/webapps/Rajan2125.pythonanywhere.com/reload/" \
+          -H "Authorization: Token ${{ secrets.PA_API_TOKEN }}"
