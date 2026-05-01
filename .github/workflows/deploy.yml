@@ -17,7 +17,7 @@ jobs:
           -H "Content-Type: application/json" \
           -d '{
             "executable": "/bin/bash",
-            "arguments": "-c \"git pull origin main\""
+            "arguments": "-c \"cd ~/loan-payment && git pull origin main\""
           }'
 
       - name: Reload web app
